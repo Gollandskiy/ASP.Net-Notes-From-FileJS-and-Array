@@ -1,0 +1,68 @@
+﻿@model Tuple<List<DZ3_04._02._2024_3.Models.Note>, List<DZ3_04._02._2024_3.Models.Note>>
+
+<h2>Notes from Code</h2>
+@if (Model.Item1 != null && Model.Item1.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Creation Date</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in Model.Item1)
+            {
+                <tr>
+                    <td>@note.Title</td>
+                    <td>@note.Text</td>
+                    <td>@note.CreationDate.ToShortDateString()</td>
+                    <td>@note.Tags[0]</td>
+                    <td>@note.Tags[1]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>No notes available from code.</div>
+}
+
+<h2>Notes from File</h2>
+@if (Model.Item2 != null && Model.Item2.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Creation Date</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var note in Model.Item2)
+            {
+                <tr>
+                    <td>@note.Title</td>
+                    <td>@note.Text</td>
+                    <td>@note.CreationDate.ToShortDateString()</td>
+                    <td>@note.Tags[0]</td>
+                    <td>@note.Tags[1]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>No notes available from code.</div>
+}
+
+@if (ViewBag.NotesLoadError != null)
+{
+    <div>@ViewBag.NotesLoadError</div>
+}
